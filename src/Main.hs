@@ -353,19 +353,19 @@ drawWorld ej@(PerdeuJogo lbotoes ReiniciarPerdeu lnumeros (Player (Jogo (Jogador
     where desenhoBkg  = fundoAtivo
           desenhoMapa = Translate 0 (l+n) (transformaMatriz ej (l/2))        
           desenhoPerdeu  = Pictures (Color (makeColorI 255 255 255 100) (rectangleSolid wW wH) : Translate 0 300 ((!!) fundos 7) : Translate 0 (-180) ((!!) lbotoes 9) : [Translate 0 (-300) ((!!) lbotoes 8)])  -- desenha-se o menu de game over sobreposto ao mapa que estava a ser jogado
-          desenhoScore   = Pictures (Translate (-wH/6) (-50) (Scale (1.2) (1.2) (transformaScore (show (div score 30)) ej 0)) : [Translate (-wH/6) (30) ((!!) fundos 8)])  -- o score já nao se encontra junto com o mapa, mas sim no menu de game over
+          desenhoScore   = Pictures (Translate (-wH/6) (-50) (Scale (1.2) (1.2) (transformaScore (show (div score 30)) ej 0)) : [Translate (-wH/6) (30) ((!!) fundos 9)])  -- o score já nao se encontra junto com o mapa, mas sim no menu de game over
           desenhoHighScore
-             | score >= highScore = Translate (wH/6) (-50) (Scale (1.2) (1.2) (transformaScore (show (div score 30)) ej 0)) : [Translate (wH/6) (30) ((!!) fundos 9)]  -- caso o valor do score seja superior ou igual ao high score, este passa a ser o novo high score
-             | otherwise = Translate (wH/6) (-50) (Scale (1.2) (1.2) (transformaScore (show (div highScore 30)) ej 0)) : [Translate (wH/6) (30) ((!!) fundos 9)]  -- caso o valor do high score seja superior ao score, este permanece igual
+             | score >= highScore = Translate (wH/6) (-50) (Scale (1.2) (1.2) (transformaScore (show (div score 30)) ej 0)) : [Translate (wH/6) (30) ((!!) fundos 8)]  -- caso o valor do score seja superior ou igual ao high score, este passa a ser o novo high score
+             | otherwise          = Translate (wH/6) (-50) (Scale (1.2) (1.2) (transformaScore (show (div highScore 30)) ej 0)) : [Translate (wH/6) (30) ((!!) fundos 8)]  -- caso o valor do high score seja superior ao score, este permanece igual
 
 drawWorld ej@(PerdeuJogo lbotoes MenuPerdeu lnumeros (Player (Jogo (Jogador (x,y)) _) a n _ score _ highScore) fundos fundoAtivo _ skinMapaAtivo _ skinJogadorAtivo) = Pictures (desenhoBkg : desenhoMapa : desenhoPerdeu : desenhoScore : desenhoHighScore)  -- botão Menu selecionado
     where desenhoBkg  = fundoAtivo
           desenhoMapa = Translate 0 (l+n) (transformaMatriz ej (l/2))        
           desenhoPerdeu  = Pictures (Color (makeColorI 255 255 255 100) (rectangleSolid wW wH) : Translate 0 300 ((!!) fundos 7) : Translate 0 (-180) ((!!) lbotoes 10) : [Translate 0 (-300) ((!!) lbotoes 7)])   
-          desenhoScore   = Pictures (Translate (-wH/6) (-50) (Scale (1.2) (1.2) (transformaScore (show (div score 30)) ej 0)) : [Translate (-wH/6) (30) ((!!) fundos 8)])
+          desenhoScore   = Pictures (Translate (-wH/6) (-50) (Scale (1.2) (1.2) (transformaScore (show (div score 30)) ej 0)) : [Translate (-wH/6) (30) ((!!) fundos 9)])
           desenhoHighScore   
-             | score >= highScore = Translate (wH/6) (-50) (Scale (1.2) (1.2) (transformaScore (show (div score 30)) ej 0)) : [Translate (wH/6) (30) ((!!) fundos 9)]
-             | otherwise = Translate (wH/6) (-50) (Scale (1.2) (1.2) (transformaScore (show (div highScore 30)) ej 0)) : [Translate (wH/6) (30) ((!!) fundos 9)]
+             | score >= highScore = Translate (wH/6) (-50) (Scale (1.2) (1.2) (transformaScore (show (div score 30)) ej 0)) : [Translate (wH/6) (30) ((!!) fundos 8)]
+             | otherwise = Translate (wH/6) (-50) (Scale (1.2) (1.2) (transformaScore (show (div highScore 30)) ej 0)) : [Translate (wH/6) (30) ((!!) fundos 8)]
 
 
 
